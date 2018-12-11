@@ -1,0 +1,28 @@
+/**
+ * @param {string[]} words
+ * @return {number}
+ */
+var uniqueMorseRepresentations = function(words) {
+    
+    var morseAlphabet = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."];
+    var latinAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+    var morseArray = [];
+    
+    // Iterate across words array to 1) translate to morse and 2) log to morseArray
+    words.forEach(function(word) {
+        var morseWord = "";
+        for (i = 0; i < word.length; i++) {
+            morseWord = morseWord + morseAlphabet[latinAlphabet.indexOf(word[i])];
+        }
+        
+        morseArray.push(morseWord);
+    });
+    
+    // Deduplicate
+    var finalArray = morseArray.filter(function(item, index) {
+        return morseArray.indexOf(item) >= index;
+    });
+    
+    return finalArray.length;
+};
