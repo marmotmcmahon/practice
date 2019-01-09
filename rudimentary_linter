@@ -1,0 +1,32 @@
+const SYMBOLS = {
+    "(": ")",
+    "{": "}",
+    "[": "]",
+}
+
+var isValid = function(s) {
+    
+    let openSymbolStack = [];
+    
+    for (var i = 0; i < s.length; i++) {
+        if (Object.keys(SYMBOLS).includes(s[i])) {
+            openSymbolStack.push(s[i]);
+        } else if (Object.values(SYMBOLS).includes(s[i])) {
+            if (openSymbolStack.length === 0) {
+                return false;
+            }
+            // if the most recent open symbol does not match the closing symbol
+            let last = openSymbolStack[openSymbolStack.length - 1];
+            if (s[i] !== SYMBOLS[last]) {
+                return false;
+                }
+            openSymbolStack.pop();
+        }
+    }
+    
+    if (openSymbolStack.length !== 0) {
+        return false;
+    }
+    
+    return true;
+}
