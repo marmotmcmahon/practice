@@ -1,0 +1,21 @@
+/**
+ * @param {number} x
+ * @return {number}
+ */
+var reverse = function(x) {
+    
+    var xString = x + "";
+    
+    if (x < 0) {
+        xString = xString.substr(1);
+        xString = "-" + xString.split("").reverse().join("");
+    } else {
+        xString = xString.split("").reverse().join("");
+    }
+    
+    if (Number(xString) > 2147483648 || Number(xString) < -2147483648) {
+        return 0;
+    }
+    
+    return xString;
+};
