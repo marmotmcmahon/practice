@@ -1,0 +1,17 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    var letters = s.split("");
+    var map = {}, max_length = 0, startIndex = 0;
+    for (let i = 0; i < letters.length; i++) {
+        if (map.hasOwnProperty(letters[i])) {
+            max_length = Math.max(i - startIndex, max_length);
+            startIndex = Math.max(startIndex, map[letters[i]] + 1);
+        }
+        map[letters[i]] = i;
+    }
+    max_length = Math.max(max_length, letters.length - startIndex);
+    return max_length;
+};
