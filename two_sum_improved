@@ -1,0 +1,26 @@
+class Solution {
+
+    /**
+     * @param Integer[] $nums
+     * @param Integer $target
+     * @return Integer[]
+     */
+    function twoSum($nums, $target) {
+        $map = array();
+        foreach ($nums as $key =>$value) {
+            $map[$value] = $key;
+        }
+        foreach ($nums as $key =>$value) {
+            $complement = $target - $value;
+            if (isset($map[$complement])) {
+                if ($key !== $map[$complement]) {
+                $result = array();
+                $result[] = $key;
+                $result[] = $map[$complement];
+                return $result;
+                }
+            }
+        }
+        return array(0,0);
+    }
+}
