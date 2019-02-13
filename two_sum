@@ -1,0 +1,19 @@
+class Solution {
+
+    /**
+     * @param Integer[] $nums
+     * @param Integer $target
+     * @return Integer[]
+     */
+    function twoSum($nums, $target) {
+        foreach ($nums as $key => $value) {
+            for ($i = 0; $i < count($nums); $i++) {
+                if ($key != $i) {
+                    if ($value + $nums[$i] == $target) {
+                        return $output = [$key, $i];
+                    }
+                }
+            }
+        }
+    }
+}
